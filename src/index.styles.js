@@ -40,12 +40,12 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1c1c1c;
+  background: #161d29;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #fd8f4c;
 }
 `;
 
