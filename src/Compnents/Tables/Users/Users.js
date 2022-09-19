@@ -5,25 +5,17 @@ import Loading from "../../Layouts/Loading/Loading";
 import Table from "./Table";
 
 const Users = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-      dispatch(GetUsers());
-    }, [dispatch]);
+  const { users } = useSelector(({ UsersReducer }) => ({
+    users: UsersReducer.users,
+  }));
 
-    const { users } = useSelector(({ UsersReducer }) => ({
-        users: UsersReducer.users,
-      }));
+  useEffect(() => {
+    dispatch(GetUsers());
+  }, [dispatch]);
 
-  return (
-    <>
-      {users.length === 0 ? (
-      <Loading/>
-      ) : (
-       <Table users={users}/>
-      )}
-    </>
-  );
+  return <>{users.length === 0 ? <Loading /> : <Table users={users} />}</>;
 };
 
 export default Users;

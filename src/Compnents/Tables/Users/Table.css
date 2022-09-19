@@ -1,7 +1,7 @@
 table {
   width: 90%;
   border-collapse: collapse;
-  margin: 2em auto;
+  margin: 1em auto;
 }
 
 th {
@@ -12,6 +12,7 @@ th {
 }
 
 td,
+input,
 th {
   padding: 0.5em;
   border: 1px solid #ccc;
@@ -30,3 +31,15 @@ td img {
 .aboutTD {
   width: "auto";
 }
+
+@media (max-width: 770px) {
+input {
+  width: 10vw;
+}
+}
+
+@media (max-width: 360px) {
+  input {
+    width: 5vw;
+  }
+  }

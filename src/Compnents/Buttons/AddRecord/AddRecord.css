@@ -1,0 +1,18 @@
+.createButtonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em auto;
+}
+
+.createButtonContainer button {
+    padding: 1em;
+    color: #fff;
+    font-weight: bold;
+    font-variant-caps: petite-caps;
+    background-color: #ff1717;
+    border: solid 1px #ff1717;
+    border-radius: 10px;
+    cursor: pointer;
+}

@@ -1,9 +1,10 @@
-import { Header, Users } from "../../Compnents";
+import { AddRecord, Header, Users } from "../../Compnents";
 
 const Home = () => {
   return (
     <div>
       <Header />
+      <AddRecord />
       <Users />
     </div>
   );
