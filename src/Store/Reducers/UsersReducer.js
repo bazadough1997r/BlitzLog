@@ -8,6 +8,9 @@ import {
   EDIT_USER,
   EDIT_USER_SUCCESS,
   EDIT_USER_FAIL,
+  CREATE_RECORD,
+  CREATE_RECORD_SUCCESS,
+  CREATE_RECORD_FAIL,
 } from "../Types";
 
 const initialState = {
@@ -74,6 +77,24 @@ export default function UsersReducer(state = initialState, action) {
           createLoad: false,
           createErr: action.err,
         };
+        case CREATE_RECORD:
+          return {
+            ...state,
+            createLoad: true,
+            createErr: initialState.createErr,
+          };
+        case CREATE_RECORD_SUCCESS:
+          return {
+            ...state,
+            user: action.user,
+            createLoad: false,
+          };
+        case CREATE_RECORD_FAIL:
+          return {
+            ...state,
+            createLoad: false,
+            createErr: action.err,
+          };
     default:
       return state;
   }

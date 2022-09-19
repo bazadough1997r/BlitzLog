@@ -1,6 +1,6 @@
 import API from "./APIs";
 
-export const FetchUsers = (page) => {
+export const FetchUsers = () => {
   return API.get(`/users?sortBy=id&order=desc`)
     .then((res) => {
       return res.data.users;
@@ -28,6 +28,16 @@ export const EditUserService = (details) => {
 
 export const SaveUpdatesService = (details) => {
   return API.put(`/users/${details.id}/`, details)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return Promise.reject(err);
+    });
+};
+
+export const NewRecordService = (details) => {
+  return API.post(`/users`, details)
     .then((res) => {
       return res.data;
     })

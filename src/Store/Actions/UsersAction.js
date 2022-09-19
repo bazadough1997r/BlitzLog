@@ -11,9 +11,18 @@ import {
   SAVE_USER,
   SAVE_USER_SUCCESS,
   SAVE_USER_FAIL,
+  CREATE_RECORD,
+  CREATE_RECORD_SUCCESS,
+  CREATE_RECORD_FAIL,
 } from "../Types";
 
-import { FetchUsers, DeleteUserService, EditUserService, SaveUpdatesService } from "../Services";
+import {
+  FetchUsers,
+  DeleteUserService,
+  EditUserService,
+  SaveUpdatesService,
+  NewRecordService
+} from "../Services";
 
 export const GetUsers = () => async (dispatch) => {
   dispatch({
@@ -43,7 +52,7 @@ export const DeleteUser = (id, deletingDone) => async (dispatch) => {
       type: DELETE_USER_SUCCESS,
       payload: data,
     });
-    deletingDone()
+    deletingDone();
   } catch {
     dispatch({
       type: DELETE_USER_FAIL,
@@ -80,11 +89,30 @@ export const SaveUpdatedUser = (newState, editingDone) => async (dispatch) => {
       type: SAVE_USER_SUCCESS,
       user: data,
     });
-    editingDone()
+    editingDone();
   } catch {
     dispatch({
       type: SAVE_USER_FAIL,
       err: "Cannot Save User!",
+    });
+  }
+};
+
+export const NewRecord = (details, doneCreating) => async (dispatch) => {
+  dispatch({
+    type: CREATE_RECORD,
+  });
+  try {
+    const data = await NewRecordService(details);
+    dispatch({
+      type: CREATE_RECORD_SUCCESS,
+      user: data,
+    });
+    doneCreating()
+  } catch {
+    dispatch({
+      type: CREATE_RECORD_FAIL,
+      err: "Cannot Create Record!",
     });
   }
 };

@@ -47,12 +47,12 @@ const Table = ({ users }) => {
   const editingDone = () => setEditId(null);
 
   const editHandler = ({ user }) => {
-    setEditId(user.id);
+    setEditId(user?.id);
     setModification({
-      id: user.id,
-      name: user.name,
-      age: user.age,
-      about: user.about,
+      id: user?.id,
+      name: user?.name,
+      age: user?.age,
+      about: user?.about,
     });
     dispatch(EditUser(user));
   };
@@ -67,7 +67,7 @@ const Table = ({ users }) => {
   const mapping = () =>
     users.map((user) => (
       <tbody key={user?.id}>
-        {editId === user.id ? (
+        {editId === user?.id ? (
           <EditableRow
             nameChangeHandler={nameChangeHandler}
             aboutChangeHandler={aboutChangeHandler}
