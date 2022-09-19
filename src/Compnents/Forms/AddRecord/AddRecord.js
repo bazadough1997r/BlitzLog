@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NewRecord, GetUsers } from "../../../Store/Actions";
+import { LoadingButton } from "../../../Compnents";
 import "./AddRecord.css";
 
 const AddRecord = () => {
   const dispatch = useDispatch();
+
+  const { createLoading } = useSelector(({ UsersReducer }) => ({
+    createLoading: UsersReducer.createLoading,
+  }));
+
   const [newRecord, setNewRecord] = useState({ age: "", name: "", about: "" });
   const [created, setCreated] = useState(false);
 
@@ -26,13 +32,12 @@ const AddRecord = () => {
 
   const createNewRecordHandler = (e) => {
     e.preventDefault();
-    setCreated(false)
+    setCreated(false);
     dispatch(NewRecord(newRecord, doneCreating));
-    setNewRecord({age: "", name: "", about: "" })
-    console.log(newRecord);
+    setNewRecord({ age: "", name: "", about: "" });
   };
 
-  const doneCreating = () => setCreated(true)
+  const doneCreating = () => setCreated(true);
 
   return (
     <form onSubmit={createNewRecordHandler} className="createButtonContainer">
@@ -55,7 +60,14 @@ const AddRecord = () => {
         onChange={ageChangeHandler}
         value={newRecord?.age}
       />
-      <button type="submit">Create</button>
+      <LoadingButton
+        loading={createLoading}
+        type="submit"
+        className="createRecordButton"
+        staticLabel="Create"
+        loadingLabel="Creating"
+        onClick={() => {}}
+      />
     </form>
   );
 };

@@ -8,6 +8,9 @@ import {
   EDIT_USER,
   EDIT_USER_SUCCESS,
   EDIT_USER_FAIL,
+  SAVE_USER,
+  SAVE_USER_SUCCESS,
+  SAVE_USER_FAIL,
   CREATE_RECORD,
   CREATE_RECORD_SUCCESS,
   CREATE_RECORD_FAIL,
@@ -16,10 +19,14 @@ import {
 const initialState = {
   users: [],
   user: {},
-  createLoad: false,
+  createLoading: false,
   createErr: "",
   loading: false,
   err: "",
+  deleteLoading: false,
+  deleteErr: "",
+  editLoading: false,
+  editErr: "",
 };
 
 export default function UsersReducer(state = initialState, action) {
@@ -34,7 +41,6 @@ export default function UsersReducer(state = initialState, action) {
         ...state,
         loading: false,
         users: action?.payload,
-        page: action.page,
       };
     case GET_USERS_FAIL:
       return {
@@ -45,56 +51,74 @@ export default function UsersReducer(state = initialState, action) {
     case DELETE_USER:
       return {
         ...state,
-        loading: false,
+        deleteLoading: true,
         err: initialState.err,
       };
     case DELETE_USER_SUCCESS:
       return {
         ...state,
-        loading: false,
+        deleteLoading: false,
       };
     case DELETE_USER_FAIL:
       return {
         ...state,
-        loading: false,
-        err: action.err,
+        deleteLoading: false,
+        deleteErr: action.err,
       };
-      case EDIT_USER:
-        return {
-          ...state,
-          createLoad: true,
-          createErr: initialState.createErr,
-        };
-      case EDIT_USER_SUCCESS:
-        return {
-          ...state,
-          user: action.user,
-          createLoad: false,
-        };
-      case EDIT_USER_FAIL:
-        return {
-          ...state,
-          createLoad: false,
-          createErr: action.err,
-        };
-        case CREATE_RECORD:
-          return {
-            ...state,
-            createLoad: true,
-            createErr: initialState.createErr,
-          };
-        case CREATE_RECORD_SUCCESS:
-          return {
-            ...state,
-            user: action.user,
-            createLoad: false,
-          };
-        case CREATE_RECORD_FAIL:
-          return {
-            ...state,
-            createLoad: false,
-            createErr: action.err,
-          };
+    case EDIT_USER:
+      return {
+        ...state,
+        editLoading: false,
+        createErr: initialState.createErr,
+      };
+    case EDIT_USER_SUCCESS:
+      return {
+        ...state,
+        user: action.user,
+        editLoading: false,
+      };
+    case EDIT_USER_FAIL:
+      return {
+        ...state,
+        editLoading: false,
+        editErr: action.err,
+      };
+    case SAVE_USER:
+      return {
+        ...state,
+        editLoading: true,
+        createErr: initialState.createErr,
+      };
+    case SAVE_USER_SUCCESS:
+      return {
+        ...state,
+        user: action.user,
+        editLoading: false,
+      };
+    case SAVE_USER_FAIL:
+      return {
+        ...state,
+        editLoading: false,
+        editErr: action.err,
+      };
+    case CREATE_RECORD:
+      return {
+        ...state,
+        createLoading: true,
+        createErr: initialState.createErr,
+      };
+    case CREATE_RECORD_SUCCESS:
+      return {
+        ...state,
+        user: action.user,
+        createLoading: false,
+      };
+    case CREATE_RECORD_FAIL:
+      return {
+        ...state,
+        createLoading: false,
+        createErr: action.err,
+      };
     default:
       return state;
   }

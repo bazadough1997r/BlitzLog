@@ -6,6 +6,7 @@ const EditableRow = ({
   ageChangeHandler,
   saveUpdatesHandler,
   handleDelete,
+  editLoading,
 }) => {
   return (
     <tr>
@@ -32,11 +33,15 @@ const EditableRow = ({
         />
       </td>
       <td>
-        <img
-          src={process.env.PUBLIC_URL + "/assets/check.png"}
-          alt="save"
-          onClick={() => saveUpdatesHandler({ modification })}
-        />
+        {editLoading ? (
+          <i className="fa fa-refresh fa-spin" style={{ marginRight: "5px" }} />
+        ) : (
+          <img
+            src={process.env.PUBLIC_URL + "/assets/check.png"}
+            alt="save"
+            onClick={() => saveUpdatesHandler({ modification })}
+          />
+        )}
         <img
           src={process.env.PUBLIC_URL + "/assets/delete.png"}
           alt="delete"

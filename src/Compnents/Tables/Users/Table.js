@@ -7,13 +7,13 @@ import {
   EditUser,
   SaveUpdatedUser,
 } from "../../../Store/Actions";
-import EditableRow from "./EditableRow";
-import ReadOnlyRow from "./ReadOnlyRow";
+import { ReadOnlyRow, EditableRow, DeleteRow } from "../../../Compnents";
 
-const Table = ({ users }) => {
+const Table = ({ users, deleteLoading, editLoading }) => {
   const dispatch = useDispatch();
 
   const [editId, setEditId] = useState(null);
+  const [deleteId, setDeleteId] = useState(null);
   const [deleted, setDelete] = useState(false);
   const [modification, setModification] = useState({
     name: "",
@@ -59,6 +59,7 @@ const Table = ({ users }) => {
 
   const handleDelete = ({ user }) => {
     setDelete(false);
+    setDeleteId(user?.id);
     dispatch(DeleteUser(user?.id, deletingDone));
   };
 
@@ -76,6 +77,14 @@ const Table = ({ users }) => {
             handleDelete={handleDelete}
             modification={modification}
             user={user}
+            editLoading={editLoading}
+          />
+        ) : deleteId === user?.id ? (
+          <DeleteRow
+            user={user}
+            editHandler={editHandler}
+            handleDelete={handleDelete}
+            deleteLoading={deleteLoading}
           />
         ) : (
           <ReadOnlyRow
@@ -91,10 +100,10 @@ const Table = ({ users }) => {
     <table>
       <thead>
         <tr>
-          <th>name</th>
-          <th>about</th>
-          <th>age</th>
-          <th>actions</th>
+          <th>Name</th>
+          <th>About</th>
+          <th>Age</th>
+          <th>Actions</th>
         </tr>
       </thead>
       {mapping()}

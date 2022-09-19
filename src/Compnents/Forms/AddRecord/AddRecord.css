@@ -6,7 +6,7 @@
   margin: 1em auto;
 }
 
-.createButtonContainer button {
+.createButtonContainer .createRecordButton {
     padding: .8em;
     color: #fff;
     font-weight: bold;

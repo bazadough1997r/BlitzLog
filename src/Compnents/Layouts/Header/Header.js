@@ -1,13 +1,13 @@
-import HeaderContainer from "./Header.styles";
+import "./Header.css";
 
 const Header = () => {
   return (
-    <HeaderContainer>
+    <div className="HeaderContainer">
       <img
         src={process.env.PUBLIC_URL + "/assets/darkLogo.png"}
         alt="BlitzLog Header Logo"
       />
-    </HeaderContainer>
+    </div>
   );
 };
 

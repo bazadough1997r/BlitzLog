@@ -1,0 +1,11 @@
+.LoadingButton {
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.LoadingButton:disabled {
+  opacity: 0.5;
+}

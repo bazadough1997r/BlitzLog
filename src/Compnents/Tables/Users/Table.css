@@ -27,6 +27,13 @@ td img {
   margin: 0rem 1rem;
 }
 
+i {
+  background-color: #fff;
+  cursor: pointer;
+  width: 3rem;
+  margin: 0rem 1rem;
+}
+
 .aboutTD {
   width: "auto";
 }
@@ -38,13 +45,13 @@ input {
 }
 
 @media (max-width: 770px) {
-input {
-  width: 10vw;
-}
+  input {
+    width: 10vw;
+  }
 }
 
 @media (max-width: 360px) {
   input {
     width: 5vw;
   }
-  }
+}
