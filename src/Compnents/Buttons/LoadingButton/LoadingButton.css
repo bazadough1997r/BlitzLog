@@ -9,3 +9,10 @@
 .LoadingButton:disabled {
   opacity: 0.5;
 }
+
+.loadBtn {
+  margin-right: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  width: 3rem;
+}

@@ -17,7 +17,7 @@ const LoadingButton = ({
         onClick={onClick}
       >
         {loading && (
-          <i className="fa fa-refresh fa-spin" style={{ marginRight: "5px" }} />
+          <i className="fa fa-refresh fa-spin loadBtn" />
         )}
         {loading && <span>{loadingLabel}</span>}
         {!loading && <span>{staticLabel}</span>}
