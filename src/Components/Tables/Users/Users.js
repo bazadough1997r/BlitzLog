@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { GetUsers } from "../../../Store/Actions";
-import { Loading, Table } from "../../../Compnents";
+import { Loading, Table } from "../../../Components";
 
 const Users = () => {
   const dispatch = useDispatch();

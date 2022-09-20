@@ -7,7 +7,7 @@ import {
   EditUser,
   SaveUpdatedUser,
 } from "../../../Store/Actions";
-import { ReadOnlyRow, EditableRow, DeleteRow } from "../../../Compnents";
+import { ReadOnlyRow, EditableRow, DeleteRow } from "../../../Components";
 
 const Table = ({ users, deleteLoading, editLoading }) => {
   const dispatch = useDispatch();
@@ -37,10 +37,28 @@ const Table = ({ users, deleteLoading, editLoading }) => {
 
   const ageChangeHandler = (e) => {
     e.preventDefault();
-    setModification({ ...modification, age: parseInt(e.target.value) });
+    setModification({ ...modification, age: e.target.value });
   };
 
-  const saveUpdatesHandler = ({ modification }) => {
+  const saveUpdatesHandler = ({ modification }, user) => {
+    if (
+      modification.name === user.name &&
+      modification.about === user.about &&
+      modification.age === user.age
+    ) {
+      setEditId(null);
+      return;
+    }
+    modification.id = user.id;
+    if (modification.name === "") {
+      modification.name = user.name;
+    }
+    if (modification.about === "") {
+      modification.about = user.about;
+    }
+    if (modification.age === "") {
+      modification.age = user.age;
+    }
     dispatch(SaveUpdatedUser(modification, editingDone));
   };
 

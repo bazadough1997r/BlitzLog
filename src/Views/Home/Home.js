@@ -1,4 +1,4 @@
-import { AddRecord, Header, Users } from "../../Compnents";
+import { AddRecord, Header, Users } from "../../Components";
 
 const Home = () => {
   return (

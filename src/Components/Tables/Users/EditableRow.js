@@ -12,6 +12,7 @@ const EditableRow = ({
     <tr>
       <td>
         <input
+          required
           placeholder="name"
           onChange={nameChangeHandler}
           defaultValue={user.name}
@@ -19,6 +20,7 @@ const EditableRow = ({
       </td>
       <td className="aboutTD">
         <input
+          required
           placeholder="description"
           onChange={aboutChangeHandler}
           defaultValue={user.about}
@@ -26,7 +28,9 @@ const EditableRow = ({
       </td>
       <td>
         <input
+          required
           maxLength="2"
+          type="number"
           placeholder="age"
           onChange={ageChangeHandler}
           defaultValue={modification.age}
@@ -39,7 +43,7 @@ const EditableRow = ({
           <img
             src={process.env.PUBLIC_URL + "/assets/check.png"}
             alt="save"
-            onClick={() => saveUpdatesHandler({ modification })}
+            onClick={() => saveUpdatesHandler({ modification }, user)}
           />
         )}
         <img

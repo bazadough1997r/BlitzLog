@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NewRecord, GetUsers } from "../../../Store/Actions";
-import { LoadingButton } from "../../../Compnents";
+import { LoadingButton } from "../../../Components";
 import "./AddRecord.css";
 
 const AddRecord = () => {
@@ -23,7 +23,7 @@ const AddRecord = () => {
   };
 
   const ageChangeHandler = (e) => {
-    setNewRecord({ ...newRecord, age: parseInt(e.target.value) });
+    setNewRecord({ ...newRecord, age: e.target.value });
   };
 
   const aboutChangeHandler = (e) => {
@@ -56,6 +56,7 @@ const AddRecord = () => {
       <input
         maxLength="2"
         placeholder="age"
+        type="number"
         required
         onChange={ageChangeHandler}
         value={newRecord?.age}
