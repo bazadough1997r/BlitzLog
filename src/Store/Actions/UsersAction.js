@@ -21,7 +21,7 @@ import {
   DeleteUserService,
   EditUserService,
   SaveUpdatesService,
-  NewRecordService
+  NewRecordService,
 } from "../Services";
 
 export const GetUsers = () => async (dispatch) => {
@@ -108,7 +108,7 @@ export const NewRecord = (details, doneCreating) => async (dispatch) => {
       type: CREATE_RECORD_SUCCESS,
       user: data,
     });
-    doneCreating()
+    doneCreating();
   } catch {
     dispatch({
       type: CREATE_RECORD_FAIL,

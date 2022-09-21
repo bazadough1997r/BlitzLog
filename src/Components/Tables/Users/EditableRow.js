@@ -1,3 +1,5 @@
+import "./Table.css";
+
 const EditableRow = ({
   user,
   modification,

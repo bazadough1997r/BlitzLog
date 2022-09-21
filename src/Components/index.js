@@ -7,7 +7,7 @@ import ReadOnlyRow from "./Tables/Users/ReadOnlyRow";
 import DeleteRow from "./Tables/Users/DeleteRow";
 import Loading from "./Layouts/Loading/Loading";
 import Table from "./Tables/Users/Table";
-import ScrollToTop from './Buttons/ScrollToTop/ScrollToTop'
+import ScrollToTop from "./Buttons/ScrollToTop/ScrollToTop";
 
 export {
   Header,
@@ -19,5 +19,5 @@ export {
   Loading,
   Table,
   DeleteRow,
-  ScrollToTop
+  ScrollToTop,
 };

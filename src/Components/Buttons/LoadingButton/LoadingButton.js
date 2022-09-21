@@ -16,9 +16,7 @@ const LoadingButton = ({
         disabled={loading}
         onClick={onClick}
       >
-        {loading && (
-          <i className="fa fa-refresh fa-spin loadBtn" />
-        )}
+        {loading && <i className="fa fa-refresh fa-spin loadBtn" />}
         {loading && <span>{loadingLabel}</span>}
         {!loading && <span>{staticLabel}</span>}
       </button>

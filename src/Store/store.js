@@ -1,9 +1,14 @@
-import { createStore, applyMiddleware } from "redux";
 import combineReducers from "./Reducers";
 import thunk from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
 
 export const reduxStore = () => {
-  const store = createStore(combineReducers, applyMiddleware(thunk));
+
+  const store = configureStore({
+    middleware: [thunk],
+    reducer: combineReducers,
+  });
+  
   return {
     store,
   };

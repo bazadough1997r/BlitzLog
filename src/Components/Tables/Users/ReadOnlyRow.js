@@ -1,5 +1,6 @@
+import "./Table.css";
+
 const ReadOnlyRow = ({ user, editHandler, handleDelete }) => {
-  
   return (
     <tr>
       <td>{user?.name}</td>
@@ -11,11 +12,11 @@ const ReadOnlyRow = ({ user, editHandler, handleDelete }) => {
           alt="edit"
           onClick={() => editHandler({ user })}
         />
-          <img
-            src={process.env.PUBLIC_URL + "/assets/delete.png"}
-            alt="delete"
-            onClick={() => handleDelete({ user })}
-          />
+        <img
+          src={process.env.PUBLIC_URL + "/assets/delete.png"}
+          alt="delete"
+          onClick={() => handleDelete({ user })}
+        />
       </td>
     </tr>
   );
