@@ -17,7 +17,7 @@ const CachePosition = () => {
   };
 
   const getAllCacheData = async () => {
-    var url = "http://localhost:3000";
+    var url = "http://localhost:3000" || "https://blitzlog.netlify.app/";
     var names = await caches.keys();
     const cacheStorage = await caches.open(names[0]);
     const cachedResponse = await cacheStorage.match(url);
@@ -30,7 +30,7 @@ const CachePosition = () => {
   const cache = () => {
     addDataIntoCache(
       "userScrollPosition",
-      "http://localhost:3000",
+      "http://localhost:3000" || "https://blitzlog.netlify.app/",
       window.pageYOffset
     );
   };

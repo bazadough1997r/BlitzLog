@@ -1,7 +1,7 @@
 # Blitz Log
 
 BlitzLog; the ultimate solution to manage clients!  
-
+https://blitzlog.netlify.app/
 
 #### How to run this app locally 
 
