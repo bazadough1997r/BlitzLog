@@ -1,56 +1,56 @@
-import { useCallback, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+// import { useCallback, useEffect, useState } from "react";
+// import { useSelector } from "react-redux";
 
-const CachePosition = () => {
-  const { loading } = useSelector(({ UsersReducer }) => ({
-    loading: UsersReducer.loading,
-  }));
-  const [cacheData, setCacheData] = useState(0);
+// const CachePosition = () => {
+//   const { loading } = useSelector(({ UsersReducer }) => ({
+//     loading: UsersReducer.loading,
+//   }));
+//   const [cacheData, setCacheData] = useState(0);
 
-  const addDataIntoCache = (cacheName, url, response) => {
-    const data = new Response(JSON.stringify(response));
-    if ("caches" in window) {
-      caches.open(cacheName).then((cache) => {
-        cache.put(url, data);
-      });
-    }
-  };
+//   const addDataIntoCache = (cacheName, url, response) => {
+//     const data = new Response(JSON.stringify(response));
+//     if ("caches" in window) {
+//       caches.open(cacheName).then((cache) => {
+//         cache.put(url, data);
+//       });
+//     }
+//   };
 
-  const getAllCacheData = async () => {
-    var url = "http://localhost:3000" || "https://blitzlog.netlify.app/";
-    var names = await caches.keys();
-    const cacheStorage = await caches.open(names[0]);
-    const cachedResponse = await cacheStorage.match(url);
-    var data = await cachedResponse.json();
-    setCacheData(parseInt(data));
-  };
+//   const getAllCacheData = async () => {
+//     var url = "http://localhost:3000" || "https://blitzlog.netlify.app/";
+//     var names = await caches.keys();
+//     const cacheStorage = await caches.open(names[0]);
+//     const cachedResponse = await cacheStorage.match(url);
+//     var data = await cachedResponse.json();
+//     setCacheData(parseInt(data));
+//   };
 
-  getAllCacheData();
+//   getAllCacheData();
 
-  const cache = () => {
-    addDataIntoCache(
-      "userScrollPosition",
-      "http://localhost:3000" || "https://blitzlog.netlify.app/",
-      window.pageYOffset
-    );
-  };
+//   const cache = () => {
+//     addDataIntoCache(
+//       "userScrollPosition",
+//       "http://localhost:3000" || "https://blitzlog.netlify.app/",
+//       window.pageYOffset
+//     );
+//   };
   
-  window.onbeforeunload = cache;
+//   window.onbeforeunload = cache;
 
-  const afterFetching = useCallback(() => {
-    if (loading) {
-      window.scrollTo({
-        top: cacheData,
-        behavior: "smooth",
-      });
-    }
-  }, [loading]);
+//   const afterFetching = useCallback(() => {
+//     if (loading) {
+//       window.scrollTo({
+//         top: cacheData,
+//         behavior: "smooth",
+//       });
+//     }
+//   }, [loading]);
 
-  // useEffect(() => {
-  //   window.onfocus = afterFetching();
-  // }, [afterFetching]);
+//   useEffect(() => {
+//     window.onfocus = afterFetching();
+//   }, [afterFetching]);
 
-  return <></>;
-};
+//   return <></>;
+// };
 
-export default CachePosition;
+// export default CachePosition;
