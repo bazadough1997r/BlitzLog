@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const CachePosition = () => {
@@ -34,17 +34,21 @@ const CachePosition = () => {
       window.pageYOffset
     );
   };
+  
   window.onbeforeunload = cache;
 
-  const afterFetching = () => {
+  const afterFetching = useCallback(() => {
     if (loading) {
       window.scrollTo({
         top: cacheData,
         behavior: "smooth",
       });
     }
-  };
-  window.onfocus = afterFetching();
+  }, [loading]);
+
+  // useEffect(() => {
+  //   window.onfocus = afterFetching();
+  // }, [afterFetching]);
 
   return <></>;
 };

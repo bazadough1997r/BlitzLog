@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { reduxStore } from './Store/store';
 import App from './App';
 import GlobalStyles from './index.styles';
+import CachePosition from './Utils/CachePosition/CachePosition';
 
 const {
   store,
@@ -17,6 +18,7 @@ root.render(
     <Provider store={store}>
     <GlobalStyles />
       <App />
+      <CachePosition/>
     </Provider>
   </React.StrictMode>
 );
