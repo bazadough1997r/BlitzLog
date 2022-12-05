@@ -6,7 +6,9 @@ https://blitzlog.netlify.app/
 #### How to run this app locally 
 
 1. `$ npm install`  
-2. `$ npm start`    
+2. `$ npm start` 
+3. test 
+
 
 
 #### Design decisions
