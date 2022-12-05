@@ -7,8 +7,6 @@ https://blitzlog.netlify.app/
 
 1. `$ npm install`  
 2. `$ npm start` 
-3. test 
-
 
 
 #### Design decisions
